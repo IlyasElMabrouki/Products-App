@@ -1,0 +1,12 @@
+{
+  "products": [
+    {
+      "id": 2,
+      "name": "Computer",
+      "price": "3000",
+      "quantity": "10",
+      "available": false,
+      "selected": true
+    }
+  ]
+}
