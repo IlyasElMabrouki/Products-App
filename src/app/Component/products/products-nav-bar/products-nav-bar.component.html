@@ -1,1 +1,32 @@
-<p>products-nav-bar works!</p>
+<nav class="navbar navbar-light bg-light">
+    <form class="form-inline">
+      <button
+        (click)="onGetAllProducts()"
+        class="btn btn-outline-success"
+        type="button"
+      >
+        All
+      </button>
+      <button
+        (click)="onGetSelectedProducts()"
+        class="btn btn-outline-success"
+        type="button"
+      >
+        Selected
+      </button>
+      <button
+        (click)="onGetAvailableProducts()"
+        class="btn btn-outline-success"
+        type="button"
+      >
+        Available
+      </button>
+      <button
+        (click)="onNewProduct()"
+        class="btn btn-outline-success"
+        type="button"
+      >
+        New Product
+      </button>
+    </form>
+</nav>

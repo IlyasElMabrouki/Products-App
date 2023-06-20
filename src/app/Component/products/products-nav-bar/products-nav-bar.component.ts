@@ -7,4 +7,20 @@ import { Component } from '@angular/core';
 })
 export class ProductsNavBarComponent {
 
+  onGetAllProducts(){
+
+  }
+
+  onGetAvailableProducts(){
+
+  }
+
+  onGetSelectedProducts(){
+
+  }
+
+  onNewProduct(){
+    
+  }
+
 }
