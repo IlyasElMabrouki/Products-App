@@ -1,12 +1,12 @@
 {
   "products": [
     {
-      "name": "Computer",
-      "price": "10",
+      "id": 2,
+      "name": "ppp",
+      "price": "150",
       "quantity": "10",
-      "selected": true,
-      "available": true,
-      "id": 1
+      "available": false,
+      "selected": false
     }
   ]
 }

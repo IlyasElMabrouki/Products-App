@@ -1,18 +1,30 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { ProductsService } from 'src/app/Services/products.service';
 import { Product } from '../../Model/product.model';
 import { Observable, catchError, map, of, startWith } from 'rxjs';
 import { ActionEvent, AppDataState, DataStateEnum, ProductActionsTypes } from 'src/app/State/product.state';
 import { Router } from '@angular/router';
+import { CommService } from 'src/app/Services/comm.service';
 
 @Component({
   selector: 'app-products',
   templateUrl: './products.component.html',
   styleUrls: ['./products.component.css'],
 })
-export class ProductsComponent {
+export class ProductsComponent implements OnInit{
   products? : Observable<AppDataState<Product[]>>;
-  constructor(private productService:ProductsService, private router:Router){}
+  constructor(private productService:ProductsService, 
+              private router:Router,
+              private comm : CommService){}
+
+  ngOnInit(): void {
+      this.comm.sourceEventSubjectObservable
+        .subscribe(
+          (event : ActionEvent)=>{
+            this.onAction(event);
+          }
+        );
+  }
 
   onGetAllProducts(){
     this.products = this.productService.getAllProducts().pipe(

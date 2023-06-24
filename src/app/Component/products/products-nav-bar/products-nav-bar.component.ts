@@ -1,4 +1,5 @@
-import { Component, EventEmitter, Output } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { CommService } from 'src/app/Services/comm.service';
 import { ActionEvent, ProductActionsTypes } from 'src/app/State/product.state';
 
 @Component({
@@ -8,22 +9,22 @@ import { ActionEvent, ProductActionsTypes } from 'src/app/State/product.state';
 })
 export class ProductsNavBarComponent {
 
-  @Output() eventEmitter : EventEmitter<ActionEvent>= new EventEmitter();
+  constructor(private comm : CommService){}
 
   onGetAllProducts(){
-    this.eventEmitter.emit({type: ProductActionsTypes.GET_ALL_PRODUCTS});
+    this.comm.publishEvent({type: ProductActionsTypes.GET_ALL_PRODUCTS});
   }
 
   onGetAvailableProducts(){
-    this.eventEmitter.emit({type: ProductActionsTypes.GET_AVAILABLE_PRODUCTS});
+    this.comm.publishEvent({type: ProductActionsTypes.GET_AVAILABLE_PRODUCTS});
   }
 
   onGetSelectedProducts(){
-    this.eventEmitter.emit({type: ProductActionsTypes.GET_SELECTED_PRODUCTS});
+    this.comm.publishEvent({type: ProductActionsTypes.GET_SELECTED_PRODUCTS});
   }
 
   onNewProduct(){
-    this.eventEmitter.emit({type: ProductActionsTypes.NEW_PRODUCT});
+    this.comm.publishEvent({type: ProductActionsTypes.NEW_PRODUCT});
   }
 
 }
