@@ -1,3 +1,3 @@
 ## Product Application using Angular 
 
-### State Management : Decomposition with Input and Output Communication
+### State Management : Decomposition with NgRx State Management
