@@ -12,6 +12,11 @@ import { ProductsService } from './Services/products.service';
 import { ProductAddComponent } from './Component/product-add/product-add.component';
 import { ProductEditComponent } from './Component/product-edit/product-edit.component';
 import { ProductsNavBarComponent } from './Component/products/products-nav-bar/products-nav-bar.component';
+import { StoreModule } from '@ngrx/store';
+import { EffectsModule } from '@ngrx/effects';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { productReducer } from './ngrx/products.reducer';
+import { ProductsEffects } from './ngrx/products.effects';
 import { ProductsListComponent } from './Component/products/products-list/products-list.component';
 
 @NgModule({
@@ -23,17 +28,21 @@ import { ProductsListComponent } from './Component/products/products-list/produc
     ProductAddComponent,
     ProductEditComponent,
     ProductsNavBarComponent,
-    ProductsListComponent,
+    ProductsListComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    StoreModule.forRoot({catalogState:productReducer}),
+    EffectsModule.forRoot([ProductsEffects]),
+    StoreDevtoolsModule.instrument()
   ],
   providers: [
     ProductsService,
+    ProductsEffects
   ],
   bootstrap: [AppComponent]
 })
